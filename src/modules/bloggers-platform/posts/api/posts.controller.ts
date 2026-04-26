@@ -56,6 +56,7 @@ export class PostsController {
   }
 
   @Put(':id')
+  @HttpCode(HttpStatus.NO_CONTENT)
   async updatePost(
     @Param('id') id: string,
     @Body() body: CreatePostInputDto,
