@@ -37,7 +37,7 @@ export class PostsService {
         {
           errorsMessages: [{ message: 'blog is not find', field: 'blogId' }],
         },
-        HttpStatus.BAD_REQUEST,
+        HttpStatus.NOT_FOUND,
       );
     }
   }
