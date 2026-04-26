@@ -9,6 +9,7 @@ import {
   Param,
   Post,
   Query,
+  HttpException,
 } from '@nestjs/common';
 import { BlogsService } from '../application/blogs.service';
 import { BlogsQueryRepository } from '../infrastructure/blogs.query-repository';
@@ -48,7 +49,17 @@ export class BlogsController {
     @Query() query: GetPostsQueryParams,
     @Param('id') blogId: string,
   ): Promise<PaginatedViewDto<PostsViewDto[]>> {
-    return this.postsQueryRepository.getPostsByBlogId(query, blogId);
+    try {
+      await this.blogsQueryRepository.getByIdOrNotFoundFail(blogId);
+      return this.postsQueryRepository.getPostsByBlogId(query, blogId);
+    } catch (e: unknown) {
+      throw new HttpException(
+        {
+          errorsMessages: [{ message: 'blog is not find', field: 'blogId' }],
+        },
+        HttpStatus.NOT_FOUND,
+      );
+    }
   }
 
   @Post()
