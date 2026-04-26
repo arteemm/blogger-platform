@@ -1,7 +1,7 @@
 import { UserDocument } from '../../domain/user.entity';
 
-export class UserViewDto  {
-    id!: string;
+export class UserViewDto {
+  id!: string;
   login!: string;
   email!: string;
   createdAt!: Date;

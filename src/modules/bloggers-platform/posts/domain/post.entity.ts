@@ -32,7 +32,6 @@ export class Post {
     post.content = dto.content;
     post.blogId = dto.blogId;
     post.blogName = dto.blogName;
-    post.createdAt = new Date();
 
     return post as PostDocument;
   }
