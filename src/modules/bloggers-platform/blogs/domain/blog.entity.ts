@@ -14,7 +14,6 @@ export class Blog {
   @Prop({ type: String, required: true })
   websiteUrl!: string;
 
-  @Prop({ type: String, required: true })
   createdAt!: Date;
 
   @Prop({ type: String, required: true })
@@ -28,7 +27,6 @@ export class Blog {
     blog.name = dto.name;
     blog.description = dto.description;
     blog.websiteUrl = dto.websiteUrl;
-    blog.createdAt = new Date();
     blog.isMembership = true;
 
     return blog as BlogDocument;
