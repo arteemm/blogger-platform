@@ -67,7 +67,6 @@ export class BlogsController {
       ...body,
       blogId: blogId,
     });
-
     return this.postsQueryRepository.getByIdOrNotFoundFail(postId);
   }
 
